@@ -1,34 +1,9 @@
 <div class="col-md-9">
 
 
-   @if (count($data)<3)
 
-         В массиве меньше трех элементов
-    @elseif(count($data)>10)
-       В массиве больше 10 элеиентов
-    @else
-        В массиве неизвестное количество элементов
-    @endif
 
-    <ul>
-        @for($i=0; $i < count($dataI); $i++)
-            <li>{{ $dataI[$i] }}</li>
-        @endfor
-    </ul>
-       <ul>
-           @foreach($data as $k=>$value)
-               <li>{{ $k.'=>'.$value }}</li>
-           @endforeach
-       </ul>
-       <ul>
-           @forelse($data as $k=>$value)
-               <li>{{ $k.'=>'.$value }}</li>
-           @empty
-               <p>No items</p>
-           @endforelse
-       </ul>
-    @each('default.list',$dataI, 'value')
-    @myDir('hello')
+
     <div class="col-md-6">
         <h2>Heading</h2>
         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
