@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Jumbotron Template for Bootstrap</title>
+
+    <title>{{ $title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -18,6 +18,7 @@
 </head>
 
 <body>
+@section('navbar')
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
     <a class="navbar-brand" href="#">Laravel project</a>
@@ -28,24 +29,19 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo route('home')?>">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo route('about')?>">About</a>
+                <a class="nav-link" href="{{route('about')}}">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo route('articles')?>">Articles</a>
+                <a class="nav-link" href="{{route('articles')}}">Articles</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo route('article',array('id'=>10))?>">Article</a>
+                <a class="nav-link" href="{{route('article',array('id'=>10))}}">Article</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown01">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('contact')}}">Contact</a>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -54,37 +50,48 @@
         </form>
     </div>
 </nav>
+@show
 
+@section('header')
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
     <div class="container">
-        <h1 class="display-3"><?php echo $title;?></h1>
+        <h1 class="display-3">{{ $title }}</h1>
 
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
         <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
 </div>
+@show
 
 <div class="container">
     <!-- Example row of columns -->
     <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        </div>
-    </div>
 
+        <div class="col-md-3">
+            @section('sidebar')
+            <div class="sidebar-module">
+            <h2>Archive</h2>
+            <ol>
+                <li><a href="#">March 2014</a></li>
+                <li><a href="#">Feruary 2014</a></li>
+                <li><a href="#">January 2014</a></li>
+                <li><a href="#">December 2013</a></li>
+                <li><a href="#">November 2013</a></li>
+                <li><a href="#">October 2013</a></li>
+                <li><a href="#">September 2013</a></li>
+                <li><a href="#">August 2013</a></li>
+                <li><a href="#">July 2013</a></li>
+                <li><a href="#">June 2013</a></li>
+                <li><a href="#">May 2013</a></li>
+                <li><a href="#">April 2013</a></li>
+            </ol>
+        </div>
+            @show
+        </div>
+
+        @yield('content')
+</div>
     <hr>
 
     <footer>
