@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Ramsey\Uuid\Uuid;
+use App\UuidTrait;
 
 class Page extends Model
 {
+    use UuidTrait;
+    public $incrementing =false;
     //
 }

@@ -4,11 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Ramsey\Uuid\Uuid;
+use App\UuidTrait;
 
 class Article extends Model
 {
-
+use \App\UuidTrait;
     use SoftDeletes;
     //
     //protected $table = 'articles';
@@ -21,5 +21,7 @@ class Article extends Model
     //protected $guarded = ['*'];
     protected $dates=['deleted_at'];
 
-
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

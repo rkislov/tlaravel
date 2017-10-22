@@ -13,14 +13,17 @@ class CreateArticlesTable extends Migration
      */
     public function up()
     {
+
         Schema::create('articles', function (Blueprint $table) {
             //$table->increments('id');
-            $table->uuid('id')->unique();
+            $table->uuid('id')->index();
             $table->primary('id');
             $table->string('name',100);
             $table->text('text');
             $table->string('img',255);
             $table->timestamps();
+            $table->uuid('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
