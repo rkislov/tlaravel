@@ -39,11 +39,48 @@ class Core extends Controller
         $article->name='New Article';
         $article->text='Article Text';
         $article->save();*/
-        $article = Article::find('7787a348-5957-4d69-8d5f-e061be42cdf0');
+        /*$article = Article::find('7787a348-5957-4d69-8d5f-e061be42cdf0');
         $article->name = 'New Name2';
         $article->text = 'New Text 2';
-        $article->save();
-        dump($article);
+        $article->save();*/
+
+        /*Article::create([
+            'id'=>Uuid::uuid4(),
+            'name'=>'Hello World',
+            'text'=>'Some text'
+
+        ]);*/
+        /*Article::firstOrCreate([
+
+            'name'=>'Hello World',
+            'text'=>'Some text'
+        ]);*/
+       /* $article = Article::firstOrNew([
+
+            'name'=>'Hello World',
+            'id'=>Uuid::uuid4(),
+            'text'=>'Some text'
+        ]);
+        $article->save();*/
+        //Article::destroy('1dcedb56-af61-4095-b231-7e8cc85230d7');
+       //$article=Article::find('f60e3f13-7d22-453c-8f9a-95eeffdccc0f');
+       //$article->delete();
+       // $article = Article::find('525bc234-1f05-40e8-b814-f962b750b0b3');
+        //$article->delete();
+        //$articles = Article::onlyTrashed()->restore();
+        $article = Article::find('525bc234-1f05-40e8-b814-f962b750b0b3');
+        $article->forceDelete();
+
+       /* foreach ($articles as $article){
+            if($article->trashed()){
+                echo $article->id.' Удалена <br/>';
+                $article->restore();
+            }else{
+                echo $article->id.' Не удалена <br/>';
+            }
+        }*/
+        //dump($article);
+        //dump($articles);
         return;
 
     }
