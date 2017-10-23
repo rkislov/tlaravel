@@ -39,8 +39,56 @@ class Core extends Controller
             echo $role->name.'<br/>';
         }*/
         //$role = $user->roles()->where('roles.id','91e2fb85-aa60-4460-a49e-ef5b824c0101')->first();
-        $role = Role::find('91e2fb85-aa60-4460-a49e-ef5b824c0101');
-        dump($role->users);
+        //$role = Role::find('91e2fb85-aa60-4460-a49e-ef5b824c0101');
+        //dump($role->users);
+        //$articles = Article::all();
+        //$articles = Article::with('user')->get();
+        //$users=User::with('articles','roles')->get();
+        //$users = User::has('articles','>=','4')->get();
+        //$articles->load('user');
+        /*foreach ($users as $user){
+            dump($user->articles);
+        }*/
+
+        //dump($articles);
+        $user=User::find('ac5ff809-db8f-46bd-b8f5-9f802f2769dc');
+        /*$article = new Article([
+            'name'=>'New Article',
+            'text'=>'Some text',
+            'img'=>'pict5.jpg'
+        ]);
+        $user->articles()->saveMany([
+            new Article([
+                'name'=>'New Article 3',
+                'text'=>'Some text 3',
+                'img'=>'pict7.jpg'
+            ]),
+            new Article([
+                'name'=>'New Article 4',
+                'text'=>'Some text 4',
+                'img'=>'pict8.jpg'
+            ]),
+            new Article([
+                'name'=>'New Article 5',
+                'text'=>'Some text 5',
+                'img'=>'pict9.jpg'
+            ]),
+
+        ]);*/
+        //$role = new Role(['name'=>'guest']);
+       // $user->roles()->save($role);
+        $user->articles()->where('id','1d3c0417-0c4e-4913-9da4-38eec3bfd2d7')
+            ->update(['name'=>'New Text']);
+        /*$user->articles()->create([
+            'name'=>'New Article1',
+            'text'=>'Some text1',
+            'img'=>'pict6.jpg'
+
+        ]);*/
+        $articles = Article::find('1d3c0417-0c4e-4913-9da4-38eec3bfd2d7');
+        dump($articles);
+
+
         return;
 
     }
