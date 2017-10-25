@@ -15,42 +15,17 @@ class ContactController extends Controller
 
     public function show(Request $request,$id=FALSE)
     {
+        if($request->isMethod('post')){
+            $rules = [
+                'name'=>'unique:users,name',
+                //'email'=>'required|email'
+            ];
 
+            $this->validate($request,$rules);
+            //kod
 
-        //print_r($request->all());
-        //$array =$request->only(['name', 'site']);
-        //$array =$request->except(['name', 'site']);
-        //print_r($array);
-
-        /*if ($request->has('name')){
-            echo '<h1 style="margin-top: 100px">'.$request->input('name','Default').'</h1>';
-        }*/
-
-        //echo '<h1 style="margin-top: 100px">'.$request->name.'</h1>';
-
-        /*if($request->is('contact')){
-            echo '<h1 style="margin-top: 100px">'.$request->path().'</h1>';
-        }*/
-        //echo '<h1 style="margin-top: 100px">'.$request->url().'</h1>';
-        //echo '<h1 style="margin-top: 100px">'.$request->fullUrl().'</h1>';
-
-        //echo '<h1 style="margin-top: 100px">'.$request->method().'</h1>';
-        //echo '<h1 style="margin-top: 100px">'.$request->root().'</h1>';
-        //print_r($request->header());
-        print_r($request->segments());
-        if($request->isMethod(('post'))){
-            //////
-            /// validation
-            ///
-
-            //$request->flash();
-            //$request->flashOnly('name','site');
-            //$request->flashExcept('name','site');
-            //return redirect()->route('contact')->withInput();
-            //echo '<h1 style="margin-top: 100px">'.$request->method().'</h1>';
+            dump($request->all());
         }
-
-
         return view('default.contact',['title'=>'Contact']);
     }
 }

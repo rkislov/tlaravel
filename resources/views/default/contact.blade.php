@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="col-md-9">
-        <pre>
+        <!--<pre>
         {{print_r(Session::all())}}
-        </pre>
+        </pre>-->
         <div class="">
             <h2>Contact us</h2>
         </div>
@@ -12,7 +12,18 @@
         <p>
             this is template for a simple marketing or information website.
         </p>
-        <form method="post" action="{{ route('contact',array('name'=>'hello')) }}">
+            @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+
+                    @endforeach
+                </ul>
+
+            </div>
+            @endif
+        <form method="post" action="{{ route('contact') }}">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="name">Name</label>
