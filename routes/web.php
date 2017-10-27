@@ -21,9 +21,13 @@ Route::get('/articles',['uses'=>'Admin\Core@getArticles', 'as'=>'articles']);
 
 Route::get('/article/{id}',[/*'middleware'=>'mymiddle:home',*/'uses'=>'Admin\Core@getArticle', 'as'=>'article'])/*->middleware['mymiddle']*/;
 
-Route::get('/contact/',['uses'=>'Admin\ContactController@show','as'=>'contact']);
+Route::get('/contact/',['middleware'=>['auth'],'uses'=>'Admin\ContactController@show','as'=>'contact']);
 Route::post('/contact',['uses'=>'Admin\ContactController@store']);
 //list pages
 //Route::get('pages/add','Admin\CoreResource@add');
 //Route::resource('/pages', 'Admin\CoreResource',['except'=>['index', 'show']]);
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

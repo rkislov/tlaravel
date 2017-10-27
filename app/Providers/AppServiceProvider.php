@@ -23,10 +23,10 @@ class AppServiceProvider extends ServiceProvider
         Response::macro('myResp', function ($value){
             return Response::make($value);
         });*/
-        DB::listen(function($query){
+        /*DB::listen(function($query){
             dump($query->sql);
             //dump($query->bindings);
-        });
+        });*/
     }
 
     /**
